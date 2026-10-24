@@ -1,0 +1,43 @@
+HOW TO USE: lost-in-translation
+====================================
+
+PURPOSE
+  Chain-translate a phrase through several uncommon languages and back to
+  English (translation telephone). The language list comes from the local
+  belebele dataset.
+
+CAPABILITIES
+  - Picks hops from B:\AI Directories_Databases\Datasets\belebele\data
+  - Default: 4 uncommon languages (French/Spanish/etc. off unless you ask)
+  - Reproducible chains with --seed; theme a chain with --script
+  - Offline fallback list if Drive B is unplugged
+  - You (the model) do the actual translating hop by hop
+
+USE CASES
+  - Mangle a slogan, lyric, love note, or name
+  - Party / group-chat telephone game
+  - Stress-test whether a phrase survives round-trip drift
+
+IDEAS
+  - Same --seed on two phrases to compare which one survives
+  - --script Cyrl for a single writing-system chain
+  - "Make it worse" = more hops
+
+PROMPTS YOU CAN PASTE
+  Lost in translation: [your sentence]
+
+  Chain-translate this through a few languages and back.
+
+  Play telephone with this phrase.
+
+  Mangle this text for me.
+
+  Theme it to Cyrillic scripts.
+
+EXAMPLE FLOW
+  You:   Lost in translation: Keep it simple.
+  Model: runs scripts/pick_languages.py --count 4
+         translates hop by hop (script + gloss), then shows the mangled English
+
+DEFAULT GOALS IF YOU DON'T NAME ONE
+  4 uncommon-language hops, then back to English, using the last phrase you said.
